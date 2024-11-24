@@ -1,0 +1,13 @@
+{
+	"services": {
+		"nats-server-test": {
+			"image": "nats:latest",
+			"container_name": "nats-server-test",
+			"restart": "unless-stopped",
+			"ports": [
+				"4222:4222",
+				"8222:8222"
+			]
+		}
+	}
+}
