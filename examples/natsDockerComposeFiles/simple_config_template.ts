@@ -1,6 +1,7 @@
 import { mkdtempSync, openSync, writeFileSync, writeSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
+import { prettyFormat } from '../helper/generalhelper';
 
 /**
  * Create a temp file with a nats configuration
@@ -11,7 +12,7 @@ import { tmpdir } from 'node:os';
 export const getNatsServerDockerComposeTemplateWithNatsConfig = (natsConfig: string): { dockerComposeNatsConfigFilePath: object, natsConfigFilePath: string } => {
 	const tmpDir = mkdtempSync(join(tmpdir(), 'natstest-'));
 	const natsConfigFilePath = join(tmpDir, "nats-server.conf")
-	writeFileSync(natsConfigFilePath, natsConfig);
+	writeFileSync(natsConfigFilePath, prettyFormat(natsConfig));
 	console.log("Using nats server config at: " + natsConfigFilePath);
 
 	// https://docs.nats.io/running-a-nats-service/configuration

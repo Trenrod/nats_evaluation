@@ -40,8 +40,8 @@ with Diagram("Client_Server_Messaging_Proxy", show=False, direction="TB"):
     redis << proxy1
     redis << proxy2
 
-    mobileA >> loadbalancer
-    mobileB >> loadbalancer
+    # mobileA >> loadbalancer
+    # mobileB >> loadbalancer
 
     mobileA >> proxy1
     mobileB >> proxy2

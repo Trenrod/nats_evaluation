@@ -36,11 +36,11 @@ with Diagram("Client_Server_Messaging_NATS", show=False, direction="TB"):
             nats_node1 - nats_node2
             nats_node1 - nats_node3
 
-        with Cluster("Authentication services"):
-            authServices = Nodejs("AuthService")
-            authServices >> nats_node1
-            mobileA >> authServices
-            mobileB >> authServices
+        #     with Cluster("Authentication services"):
+        #         authServices = Nodejs("AuthService")
+        #         authServices >> nats_node1
+        #         mobileA >> authServices
+        #         mobileB >> authServices
 
         with Cluster("Service Pools"):
             services = [

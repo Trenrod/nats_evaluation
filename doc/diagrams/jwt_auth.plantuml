@@ -1,0 +1,18 @@
+@startuml NATS JWT auth
+
+participant "UCServer A" as UCS
+participant "NATS Cluster" as NATS
+participant "Client A" as CA
+
+-->> NATS: Configurations:\n\
+* **Operator JWT**
+
+UCS --> NATS: Auth with **Client JWT** \n\
+* subscribe = ["server.{UCSID}.>"] \n\
+* publish = "_INBOX.>"
+
+CA --> NATS: Auth with **Client JWT** \n\
+* subscribe = ["server.{UCSID}.client.{SessionId}"] \n\
+* publish = "_INBOX.>"
+
+@enduml
