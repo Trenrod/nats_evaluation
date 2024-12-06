@@ -1,21 +1,16 @@
 /**
- * Removes leading whitespace from each line in a template literal.
- * created by chatgpt
+ * Calculates spaces from first line and remotes them for all lines
  * 
  * @param {TemplateStringsArray} strings - The template strings array.
  * @param {...any[]} values - The values to be interpolated into the template.
  * @returns {string} The dedented string.
  */
-export function dedent(strings: TemplateStringsArray, ...values: any[]): string {
-	let raw = strings.raw;
+export function prettyFormat(natsConfigString: string): string {
 	let result = "";
-
-	for (let i = 0; i < raw.length; i++) {
-		result += raw[i].replace(/\n[\t ]+/g, "\n"); // Remove leading whitespace from each line
-		if (i < values.length) {
-			result += values[i];
-		}
+	const regMatch = natsConfigString.match("\n\t+");
+	if (regMatch?.[0] == null) {
+		return natsConfigString;
 	}
-
+	result = natsConfigString.replaceAll(regMatch[0], "\n");
 	return result.trim();
 }
